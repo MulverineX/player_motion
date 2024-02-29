@@ -30,7 +30,7 @@ function player_motion:api/launch_xyz
 If you'd like more fine-grain control, you can summon the creepers yourself and simply use delta for the subticking with the following format:
 ```mcfunction
 function player_motion:internal/subtick/begin_launch_context
-execute summon creeper <x y+1000 z> run function player_motion:internal/summon/initialize_creepers
+execute summon creeper positioned <x y+1000 z> run function player_motion:internal/summon/initialize_creepers
 scoreboard players operation $temp player_motion.internal.id = @s player_motion.internal.id
 function player_motion:internal/subtick/end_launch_context
 ```
