@@ -18,10 +18,5 @@ execute if score $diff player_motion.internal.gamemode matches 0 run difficulty 
 #Teleport self down
 tp @s ~ ~-1000 ~
 
-#Restore blast protection
-execute as @s[tag=player_motion.internal.blastprot] run return 0
-
-execute if score @s player_motion.internal.blastprot.feet matches 1.. run item modify entity @s armor.feet player_motion:blastprot/restore/feet
-execute if score @s player_motion.internal.blastprot.legs matches 1.. run item modify entity @s armor.legs player_motion:blastprot/restore/legs
-execute if score @s player_motion.internal.blastprot.chest matches 1.. run item modify entity @s armor.chest player_motion:blastprot/restore/chest
-execute if score @s player_motion.internal.blastprot.head matches 1.. run item modify entity @s armor.head player_motion:blastprot/restore/head
+#Unsuppress the explosion kbr resistance trait
+attribute @s minecraft:generic.explosion_knockback_resistance modifier remove player_motion_disable_kbr

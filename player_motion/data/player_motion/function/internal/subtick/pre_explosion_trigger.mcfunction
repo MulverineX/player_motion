@@ -18,24 +18,5 @@ gamemode creative
 #Teleport self up
 tp @s ~ ~1000 ~
 
-#Store blast protection values & temporarily remove it if present
-tag @s remove player_motion.internal.blastprot
-execute unless items entity @s armor.* *[enchantments~[{enchantment:"minecraft:blast_protection"}]] run return 0
-tag @s add player_motion.internal.blastprot
-
-scoreboard players set @s player_motion.internal.blastprot.feet 0
-scoreboard players set @s player_motion.internal.blastprot.legs 0
-scoreboard players set @s player_motion.internal.blastprot.chest 0
-scoreboard players set @s player_motion.internal.blastprot.head 0
-
-data modify storage player_motion:storage Inventory set from entity @s Inventory
-
-execute if items entity @s armor.feet *[minecraft:enchantments] store result score @s player_motion.internal.blastprot.feet run data get storage player_motion:storage Inventory[{Slot:100b}].components."minecraft:enchantments".levels."minecraft:blast_protection"
-execute if items entity @s armor.legs *[minecraft:enchantments] store result score @s player_motion.internal.blastprot.legs run data get storage player_motion:storage Inventory[{Slot:101b}].components."minecraft:enchantments".levels."minecraft:blast_protection"
-execute if items entity @s armor.chest *[minecraft:enchantments] store result score @s player_motion.internal.blastprot.chest run data get storage player_motion:storage Inventory[{Slot:102b}].components."minecraft:enchantments".levels."minecraft:blast_protection"
-execute if items entity @s armor.head *[minecraft:enchantments] store result score @s player_motion.internal.blastprot.head run data get storage player_motion:storage Inventory[{Slot:103b}].components."minecraft:enchantments".levels."minecraft:blast_protection"
-
-item modify entity @s armor.feet player_motion:blastprot/remove
-item modify entity @s armor.legs player_motion:blastprot/remove
-item modify entity @s armor.chest player_motion:blastprot/remove
-item modify entity @s armor.head player_motion:blastprot/remove
+#Suppress the explosion kbr resistance trait
+attribute @s minecraft:generic.explosion_knockback_resistance modifier add player_motion_disable_kbr -100 add_value
