@@ -19,7 +19,7 @@ attribute @s knockback_resistance modifier add player_motion:disable_knockback_r
 function player_motion:internal/launch/gamemode/get
 gamemode creative
 tp ~ ~10000 ~
-execute at @s run function player_motion:internal/summon/main with storage player_motion:math
+execute rotated as @s positioned ~ ~10000 ~ run function player_motion:internal/summon/main with storage player_motion:math
 tp ~ ~ ~
 function player_motion:internal/launch/gamemode/restore
 attribute @s knockback_resistance modifier remove player_motion:disable_knockback_resistance
