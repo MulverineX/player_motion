@@ -1,6 +1,6 @@
 {
   "pack": {
-    "pack_format": 48,
+    "pack_format": 52,
     "description": "Explosion-based player motion library"
   }
 }
