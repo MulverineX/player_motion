@@ -1,6 +1,10 @@
 #> player_motion:internal/math/main
 
 # full_power=sqrt(motion_x²+motion_y²+motion_z²)
+    # Save sign of $motion_y
+	execute store success score $negative_sine player_motion.internal.math \
+	    if score $motion_y player_motion.internal.math matches ..-1
+
     # Normalize
         execute if score $motion_x player_motion.internal.math matches ..-1 run \
             scoreboard players operation $motion_x player_motion.internal.math *= #constant.-1 player_motion.internal.const
