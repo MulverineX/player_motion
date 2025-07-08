@@ -15,14 +15,14 @@ execute \
     scoreboard players operation $motion_z player_motion.internal.math = @s player_motion.internal.motion.z
 
 execute in minecraft:overworld run function player_motion:internal/math/main
-attribute @s knockback_resistance modifier add player_motion:disable_knockback_resistance -1 add_multiplied_total
+attribute @s explosion_knockback_resistance modifier add player_motion:disable_knockback_resistance -1 add_multiplied_total
 function player_motion:internal/launch/gamemode/get
 gamemode creative
 tp ~ ~10000 ~
 execute rotated as @s positioned ~ ~10000 ~ run function player_motion:internal/summon/main with storage player_motion:math
 tp ~ ~ ~
 function player_motion:internal/launch/gamemode/restore
-attribute @s knockback_resistance modifier remove player_motion:disable_knockback_resistance
+attribute @s explosion_knockback_resistance modifier remove player_motion:disable_knockback_resistance
 
 scoreboard players set $function_called player_motion.internal.dummy 0
 tag @s remove player_motion.launch
