@@ -37,7 +37,3 @@ summon marker 0.0 0.0 0.0 {UUID:[I; -725781337, 1317161479, -2007965756, -660627
 
 # TRIG LOOKUP TABLE:
 function player_motion:internal/technical/trig
-
-
-# REMOVE OLD ATTRIBUTE MODIFIER
-attribute @a knockback_resistance modifier remove player_motion:disable_knockback_resistance
