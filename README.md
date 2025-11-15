@@ -1,4 +1,8 @@
-# Player Motion
+# Notice: This version of the library is no longer officially maintained, PRs will be accepted, and if anyone wants to have direct commit access, ping me on MCC
+Those who want to make maps compatible with Realms must attempt to use this version until mojang does something about """experimental""" features. No support is available in our Issues or Discord thread for this version of the library unless it is being used for a version prior to Minecraft 1.21.11. 
+
+## Player Motion
+
 Player Motion is an explosion-based library that uses subtick timing to ensure that only one player is pushed by the blast without any side effects.
 
 Credit to [@BigPapi13](https://github.com/BigPapi13/Delta) for making the original library this is inspired by. This project aims to succeed it.
