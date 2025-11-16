@@ -1,4 +1,4 @@
-#> player_motion:internal/launch/main
+#> player_motion:internal/main
 # Launches players in the input local direction
 
 execute if entity @s[gamemode=survival] run scoreboard players set $mode player_motion.internal.gamemode 2
