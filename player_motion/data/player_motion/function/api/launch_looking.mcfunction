@@ -6,4 +6,6 @@ scoreboard players set $x player_motion.api.launch 0
 scoreboard players set $y player_motion.api.launch 0
 scoreboard players operation $z player_motion.api.launch = $strength player_motion.api.launch
 
-function player_motion:internal/launch/main
+# TODO: Run conversion from old velocity to new
+
+function player_motion:internal/main
