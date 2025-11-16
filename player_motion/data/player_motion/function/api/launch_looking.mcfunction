@@ -20,6 +20,4 @@ execute store result storage player_motion:internal/temp convert.index int 1 run
 
 execute store result score $z player_motion.internal.dummy run function player_motion:internal/convert_from_legacy/index with storage player_motion:internal/temp convert
 
-tellraw @a {score:{name:"$z",objective:"player_motion.internal.dummy"}}
-
 function player_motion:internal/main
