@@ -1,5 +1,7 @@
 # TODO: Compare performance of using an entity for this math vs the old trig
 
+scoreboard players set $temp player_motion.internal.dummy 1
+
 execute store result storage player_motion:internal/temp matrix.x double 1 run scoreboard players get $x player_motion.api.launch
 execute store result storage player_motion:internal/temp matrix.y double 1 run scoreboard players get $y player_motion.api.launch
 execute store result storage player_motion:internal/temp matrix.z double 1 run scoreboard players get $z player_motion.api.launch
