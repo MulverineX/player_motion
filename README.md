@@ -7,7 +7,7 @@ Credit to `nedraw` from MCC for the ender crystal methodology & implementation t
 
 Credit to [@SuperSwordTW](https://github.com/SuperSwordTW) for helping make significant math performance & stability improvements.
 
-Credit to `1000hrcelebration` & `mastershroob` from MCC for the method of converting desired a global vector into a local vector.
+Credit to `1000hrcelebration` & `mastershroob` from MCC for the method of converting a desired global vector into a local vector.
 
 ## How to use
 
