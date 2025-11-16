@@ -18,7 +18,7 @@ execute \
     run return 0
 
 
-execute as d4bd74a7-4e82-4a07-8850-dfc4d89f9e2f in minecraft:overworld positioned 0.0 0.0 0.0 run function player_motion:internal/math/get_vector_info
+execute rotated as @s as d4bd74a7-4e82-4a07-8850-dfc4d89f9e2f in minecraft:overworld positioned 0.0 0.0 0.0 run function player_motion:internal/math/get_vector_info
 
 
 scoreboard players set $temp player_motion.internal.dummy 0
