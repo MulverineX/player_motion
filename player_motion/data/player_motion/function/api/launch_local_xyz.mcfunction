@@ -17,6 +17,9 @@ execute \
     if score $z player_motion.api.launch matches 0 \
     run return 0
 
+scoreboard players operation $x player_motion.internal.dummy = $x player_motion.api.launch
+scoreboard players operation $y player_motion.internal.dummy = $y player_motion.api.launch
+scoreboard players operation $z player_motion.internal.dummy = $z player_motion.api.launch
 
 function player_motion:internal/main
 

@@ -1,5 +1,5 @@
 $execute facing ~$(ix) ~$(jx) ~$(kx) run teleport @s ^ ^ ^$(x)
-$execute facing ~$(iy) ~$(jy) ~$(ky) positioned as @s run teleport @s ^ ^ ^$(y)
+$execute facing ~ ~$(jy) ~$(ky) positioned as @s run teleport @s ^ ^ ^$(y)
 $execute facing ~$(iz) ~$(jz) ~$(kz) positioned as @s run teleport @s ^ ^ ^$(z)
 
 execute store result score $x player_motion.api.launch run data get entity @s Pos[0]
