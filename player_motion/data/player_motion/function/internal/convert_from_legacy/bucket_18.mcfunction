@@ -1,5 +1,4 @@
 # Bucket 18: crystal 36001 to 38000
-scoreboard players operation $crystal player_motion.internal.dummy *= $m_18 player_motion.internal.const
-scoreboard players operation $crystal player_motion.internal.dummy /= $d player_motion.internal.const
-scoreboard players operation $crystal player_motion.internal.dummy += $a_18 player_motion.internal.const
-return run scoreboard players get $crystal player_motion.internal.dummy
+scoreboard players operation $crystal player_motion.internal.dummy *= $convert.18.multiplier player_motion.internal.const
+scoreboard players operation $crystal player_motion.internal.dummy /= #constant.1000000 player_motion.internal.const
+scoreboard players operation $crystal player_motion.internal.dummy += $convert.18.adder player_motion.internal.const

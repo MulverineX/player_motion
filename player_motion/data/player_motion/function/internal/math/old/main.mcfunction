@@ -31,7 +31,7 @@
         function player_motion:internal/math/full_power/trig
 
 # n_full_exp=floor(full_power/0.865)
-    scoreboard players operation $n_full_exp player_motion.internal.math /= #constant.fpc player_motion.internal.const
+    scoreboard players operation $n_full_exp player_motion.internal.math /= #constant.8000 player_motion.internal.const
 
 # Change back the angle
     execute if score $angle player_motion.internal.math matches 1 run data modify storage player_motion:math magnitude.angle set value 0
@@ -41,7 +41,7 @@
 
 # sub power operations
     # sub_power=floor(full_power%0.8)
-        scoreboard players operation $sub_power player_motion.internal.math %= #constant.fpc player_motion.internal.const
+        scoreboard players operation $sub_power player_motion.internal.math %= #constant.8000 player_motion.internal.const
 
     # d12=1-sub_power
         scoreboard players set $d12 player_motion.internal.math 10000

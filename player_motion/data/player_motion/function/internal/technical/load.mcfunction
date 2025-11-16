@@ -13,10 +13,12 @@ scoreboard objectives add player_motion.internal.const dummy
     scoreboard players set #constant.2 player_motion.internal.const 2
     scoreboard players set #constant.10 player_motion.internal.const 10
     scoreboard players set #constant.12 player_motion.internal.const 12
-    scoreboard players set #constant.1000 player_motion.internal.const 1000
     scoreboard players set #constant.100 player_motion.internal.const 100
-    scoreboard players set #constant.fpc player_motion.internal.const 8000
+    scoreboard players set #constant.1000 player_motion.internal.const 1000
+    scoreboard players set #constant.2000 player_motion.internal.const 2000
+    scoreboard players set #constant.8000 player_motion.internal.const 8000
     scoreboard players set #constant.100000 player_motion.internal.const 100000
+    scoreboard players set #constant.1000000 player_motion.internal.const 1000000
 scoreboard objectives add player_motion.internal.gamemode dummy
 scoreboard objectives add player_motion.internal.store dummy
 function player_motion:internal/convert_from_legacy/scoreboard_constants
