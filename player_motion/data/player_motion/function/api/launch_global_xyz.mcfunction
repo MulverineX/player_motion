@@ -1,6 +1,5 @@
-#> player_motion:api/launch_xyz
+#> player_motion:api/launch_global_xyz
 # Launches the player in the input direction
-execute on vehicle run return fail
 
 # TODO: Run math to convert global input to local
 

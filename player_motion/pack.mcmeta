@@ -1,6 +1,6 @@
 {
   "pack": {
-    "pack_format": 81,
-    "description": "Explosion-based player motion library"
+    "pack_format": 89,
+    "description": "Enchantment effect-based player motion library"
   }
 }
