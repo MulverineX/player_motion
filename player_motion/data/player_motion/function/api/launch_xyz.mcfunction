@@ -12,6 +12,12 @@
 
 execute on vehicle run return fail
 
+execute store result score $x player_motion.internal.dummy store result score $y player_motion.internal.dummy run scoreboard players set $z player_motion.internal.dummy 0
+
+scoreboard players operation $x_ player_motion.internal.dummy = $x player_motion.api.launch
+scoreboard players operation $y_ player_motion.internal.dummy = $y player_motion.api.launch
+scoreboard players operation $z_ player_motion.internal.dummy = $z player_motion.api.launch
+
 
 execute unless score $x player_motion.api.launch matches 0 run \
     function player_motion:internal/convert_from_legacy/entry/x
@@ -35,5 +41,8 @@ execute if predicate player_motion:internal/large_global as d4bd74a7-4e82-4a07-8
 execute if score $temp player_motion.internal.dummy matches 0 run \
     function player_motion:internal/math/global_to_local
 
-
 function player_motion:internal/main
+
+scoreboard players operation $x player_motion.api.launch = $x_ player_motion.internal.dummy
+scoreboard players operation $y player_motion.api.launch = $y_ player_motion.internal.dummy
+scoreboard players operation $z player_motion.api.launch = $z_ player_motion.internal.dummy
