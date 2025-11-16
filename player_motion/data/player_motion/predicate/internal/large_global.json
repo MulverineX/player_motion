@@ -14,8 +14,8 @@
           "score": "player_motion.api.launch"
         },
         "range": {
-          "min": -21474,
-          "max": 21474
+          "min": -12398,
+          "max": 12398
         }
       }
     },
@@ -32,8 +32,8 @@
           "score": "player_motion.api.launch"
         },
         "range": {
-          "min": -21474,
-          "max": 21474
+          "min": -12398,
+          "max": 12398
         }
       }
     },
@@ -50,8 +50,8 @@
           "score": "player_motion.api.launch"
         },
         "range": {
-          "min": -21474,
-          "max": 21474
+          "min": -12398,
+          "max": 12398
         }
       }
     }

@@ -6,4 +6,4 @@ execute store result score $x player_motion.api.launch run data get entity @s Po
 execute store result score $y player_motion.api.launch run data get entity @s Pos[1]
 execute store result score $z player_motion.api.launch run data get entity @s Pos[2]
 
-tp @s 0 0 0
+tp @s 0.0 0.0 0.0

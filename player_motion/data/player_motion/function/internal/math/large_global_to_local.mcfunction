@@ -4,7 +4,7 @@ execute store result storage player_motion:internal/temp matrix.x double 1 run s
 execute store result storage player_motion:internal/temp matrix.y double 1 run scoreboard players get $y player_motion.api.launch
 execute store result storage player_motion:internal/temp matrix.z double 1 run scoreboard players get $z player_motion.api.launch
 data modify storage player_motion:internal/temp matrix.ix set from storage player_motion:internal/temp vec_i[0]
-data modify storage player_motion:internal/temp matrix.iy set from storage player_motion:internal/temp vec_i[1]
+data modify storage player_motion:internal/temp matrix.iy set value 0.0d
 data modify storage player_motion:internal/temp matrix.iz set from storage player_motion:internal/temp vec_i[2]
 
 data modify storage player_motion:internal/temp matrix.jx set from storage player_motion:internal/temp vec_j[0]
