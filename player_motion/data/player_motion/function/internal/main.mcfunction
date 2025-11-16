@@ -13,7 +13,7 @@ function player_motion:internal/store/z
 
 gamemode spectator
 
-execute if score #mode player_motion.internal.gamemode matches 2 store success score $mode player_motion.internal.gamemode run return run gamemode survival
+execute if score $mode player_motion.internal.gamemode matches 2 store success score $mode player_motion.internal.gamemode run return run gamemode survival
 
 gamemode adventure
 
