@@ -1,6 +1,6 @@
 #> player_motion:api/launch_local_xyz
 ##
-# Launches the player in the input direction along the local axes
+# Launches the player in the input direction relative to their rotation
 #
 # Does not support players in spectator mode nor mounted players
 #
@@ -22,6 +22,5 @@ scoreboard players operation $y player_motion.internal.dummy = $y player_motion.
 scoreboard players operation $z player_motion.internal.dummy = $z player_motion.api.launch
 
 function player_motion:internal/main
-
 
 return 1
