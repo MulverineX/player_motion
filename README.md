@@ -11,7 +11,7 @@ Credit to `1000hrcelebration` & `mastershroob` from MCC for the method of conver
 
 ## How to use
 
-### Launching a player along its local coordinates (`^ ^ ^`)
+### Launching a player along local coordinates (`^ ^ ^`)
 
 ```mcfunction
 # Left/Right
@@ -25,6 +25,7 @@ function player_motion:api/launch_local_xyz
 ```
 - `$x`, `$y`, and `$z` are the strength in blocks/tick to launch the player in the local directions. A `$z` of 10000 will push the player forward at 1 block/tick
 - Only the player executing the command will receive a motion update
+- Must be ran positioned as the player
 
 ### Launching a player along its relative coordinates (`~ ~ ~`)
 
@@ -38,6 +39,7 @@ function player_motion:api/launch_global_xyz
 - `$x`, `$y`, and `$z` are the strength in blocks/tick to launch the player in the x, y, and z directions
 - As before, only the player executing the command will be launched
 - While this will work on entities besides the player, it is recommended to modify their `Motion` nbt directly
+- Must be ran `at` the player
 
 *Notes:
 - These functions are *additive* and will apply motion in addition to existing motion rather than directly setting it to whatever input you send
@@ -47,17 +49,16 @@ function player_motion:api/launch_global_xyz
 <details>
   <summary>Click to expand</summary>
 
-  ### Launching a player in the direction it is looking
+  ### Launching a player towards/away from the current rotation
 
   ```mcfunction
   scoreboard players set $strength player_motion.api.launch 10000
   function player_motion:api/launch_looking
   ```
   - `$strength` represents motion in approximate blocks/tick, scaled by 10000. A strength of 10000 will push the player at about 1 block/tick
-  - The facing direction of the player is the direction they will be launched in
   - Only the player executing the command will receive a motion update
 
-  ### Launching a player with xyz vector
+  ### Launching a player with an xyz vector
 
   ```mcfunction
   scoreboard players set $x player_motion.api.launch 500

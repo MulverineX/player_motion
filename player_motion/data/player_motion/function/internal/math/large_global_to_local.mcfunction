@@ -1,8 +1,8 @@
 # TODO: Compare performance of using an entity for this math vs the old trig
 
-execute store result storage player_motion:internal/temp matrix.x double 1 run scoreboard players get $x player_motion.api.launch
-execute store result storage player_motion:internal/temp matrix.y double 1 run scoreboard players get $y player_motion.api.launch
-execute store result storage player_motion:internal/temp matrix.z double 1 run scoreboard players get $z player_motion.api.launch
+execute store result storage player_motion:internal/temp matrix.x double 1 run scoreboard players get $x player_motion.internal.dummy
+execute store result storage player_motion:internal/temp matrix.y double 1 run scoreboard players get $y player_motion.internal.dummy
+execute store result storage player_motion:internal/temp matrix.z double 1 run scoreboard players get $z player_motion.internal.dummy
 data modify storage player_motion:internal/temp matrix.ix set from storage player_motion:internal/temp vec_i[0]
 data modify storage player_motion:internal/temp matrix.iz set from storage player_motion:internal/temp vec_i[2]
 
