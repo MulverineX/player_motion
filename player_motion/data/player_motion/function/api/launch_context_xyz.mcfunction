@@ -11,14 +11,13 @@
 # @returns<0 | 1> - 0 if no motion was applied, 1 if motion was applied
 ##
 
-execute positioned as @s positioned ^ ^ ^1 rotated as @s positioned ^ ^ ^-1 if entity @s[distance=..0.00001] run return run function player_motion:api/launch_local_xyz
-execute positioned as @s positioned ^ ^ ^1 rotated 0 0 positioned ^ ^ ^-1 if entity @s[distance=..0.00001] run return run function player_motion:api/launch_global_xyz
-
 execute \
     if score $x player_motion.api.launch matches 0 \
     if score $y player_motion.api.launch matches 0 \
     if score $z player_motion.api.launch matches 0 \
     run return 0
+
+execute positioned as @s positioned ^ ^ ^1 rotated as @s positioned ^ ^ ^-1 if entity @s[distance=..0.00001] run return run function player_motion:api/launch_local_xyz
 
 
 execute store result storage player_motion:internal/temp matrix.x double 1 run scoreboard players get $x player_motion.api.launch

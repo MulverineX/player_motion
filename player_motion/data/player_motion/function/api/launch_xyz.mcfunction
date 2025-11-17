@@ -12,19 +12,18 @@
 
 execute on vehicle run return fail
 
-execute store result score $x player_motion.internal.dummy store result score $y player_motion.internal.dummy run scoreboard players set $z player_motion.internal.dummy 0
-
-scoreboard players operation $x_ player_motion.internal.dummy = $x player_motion.api.launch
-scoreboard players operation $y_ player_motion.internal.dummy = $y player_motion.api.launch
-scoreboard players operation $z_ player_motion.internal.dummy = $z player_motion.api.launch
-
-
 execute unless score $x player_motion.api.launch matches 0 run \
     function player_motion:internal/convert_from_legacy/entry/x
 execute unless score $y player_motion.api.launch matches 0 run \
     function player_motion:internal/convert_from_legacy/entry/y
 execute unless score $z player_motion.api.launch matches 0 run \
     function player_motion:internal/convert_from_legacy/entry/z
+
+execute store result score $x player_motion.internal.dummy store result score $y player_motion.internal.dummy run scoreboard players set $z player_motion.internal.dummy 0
+
+scoreboard players operation $x_ player_motion.internal.dummy = $x player_motion.api.launch
+scoreboard players operation $y_ player_motion.internal.dummy = $y player_motion.api.launch
+scoreboard players operation $z_ player_motion.internal.dummy = $z player_motion.api.launch
 
 
 execute as d4bd74a7-4e82-4a07-8850-dfc4d89f9e2f in minecraft:overworld positioned 0.0 0.0 0.0 run \
