@@ -1,4 +1,9 @@
 # Bucket 29: crystal 58001 to 60000
-scoreboard players operation $crystal player_motion.internal.dummy *= $convert.29.multiplier player_motion.internal.const
-scoreboard players operation $crystal player_motion.internal.dummy /= #constant.1000000 player_motion.internal.const
-scoreboard players operation $crystal player_motion.internal.dummy += $convert.29.adder player_motion.internal.const
+execute store result storage player_motion:tmp convert double 0.663363 run scoreboard players get $crystal player_motion.internal.dummy
+execute store result score $crystal player_motion.internal.dummy run data get storage player_motion:tmp player_motion.internal.dummy 10
+scoreboard players operation $temp player_motion.internal.dummy = $crystal player_motion.internal.dummy
+scoreboard players operation $temp player_motion.internal.dummy %= #constant.10 player_motion.internal.const
+execute if score $temp player_motion.internal.dummy matches 5.. run scoreboard players add $crystal player_motion.internal.dummy 10
+scoreboard players operation $crystal player_motion.internal.dummy /= #constant.10 player_motion.internal.const
+scoreboard players operation $crystal player_motion.internal.dummy += $a_29 player_motion.internal.const
+scoreboard players operation $crystal player_motion.internal.dummy *= #sign player_motion.internal.dummy
