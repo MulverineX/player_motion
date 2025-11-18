@@ -33,7 +33,7 @@ execute as d4bd74a7-4e82-4a07-8850-dfc4d89f9e2f in minecraft:overworld positione
 scoreboard players set $temp player_motion.internal.dummy 0
 
 execute if predicate player_motion:internal/large_global as d4bd74a7-4e82-4a07-8850-dfc4d89f9e2f \ 
-    store success score $temp player_motion.internal.dummy \
+    store result score $temp player_motion.internal.dummy \
     in minecraft:overworld positioned 0.0 0.0 0.0 run \
     function player_motion:internal/math/large_global_to_local
 
