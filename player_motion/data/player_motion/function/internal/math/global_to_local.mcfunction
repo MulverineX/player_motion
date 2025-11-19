@@ -34,6 +34,6 @@ scoreboard players operation $y player_motion.internal.dummy += $vec_j.z player_
 scoreboard players operation $z player_motion.internal.dummy += $vec_k.y player_motion.internal.dummy
 scoreboard players operation $z player_motion.internal.dummy += $vec_k.z player_motion.internal.dummy
 
-scoreboard players operation $x player_motion.internal.dummy /= #constant.100000 player_motion.internal.const
-scoreboard players operation $y player_motion.internal.dummy /= #constant.100000 player_motion.internal.const
-scoreboard players operation $z player_motion.internal.dummy /= #constant.100000 player_motion.internal.const
+scoreboard players operation $x player_motion.internal.dummy /= $constant.100000 player_motion.internal.const
+scoreboard players operation $y player_motion.internal.dummy /= $constant.100000 player_motion.internal.const
+scoreboard players operation $z player_motion.internal.dummy /= $constant.100000 player_motion.internal.const
