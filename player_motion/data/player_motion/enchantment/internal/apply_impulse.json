@@ -22,7 +22,7 @@
             {
                 "effect": {
                     "type": "minecraft:run_function",
-                    "function": "player_motion:internal/reset"
+                    "function": "player_motion:internal/launch/reset"
                 }
             },
             {

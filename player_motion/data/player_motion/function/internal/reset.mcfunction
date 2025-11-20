@@ -1,1 +1,0 @@
-item modify entity @s saddle {function:"set_enchantments",add:true,enchantments:{"player_motion:internal/apply_impulse":-100}}
