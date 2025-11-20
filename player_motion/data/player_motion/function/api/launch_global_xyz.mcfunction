@@ -17,6 +17,7 @@ execute \
     if score $z player_motion.api.launch matches 0 \
     run return 0
 
+execute positioned as @s positioned ~ ~1 ~ positioned ^ ^ ^-1 if entity @s[distance=..0.0001] run return run function player_motion:internal/handle/main
 
 execute as d4bd74a7-4e82-4a07-8850-dfc4d89f9e2f in minecraft:overworld positioned 0.0 0.0 0.0 run function player_motion:internal/math/get_vector_info
 
