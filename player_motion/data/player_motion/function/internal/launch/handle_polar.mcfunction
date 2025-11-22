@@ -1,11 +1,10 @@
 #> handle_polar.mcfunction
 ## Handle polar axis gimbal lock case (x vertical rotation of `-90` degrees)
 
-## Swap y and z, flip sign of y. If needed, flip sign of x and restore sign of y.
+## Swap y and z, flip sign of y. If y horizontal rotation is between 90 and -90, flip sign of x and restore sign of y.
 scoreboard players operation $y player_motion.internal.dummy >< $z player_motion.internal.dummy
 scoreboard players operation $y player_motion.internal.dummy *= #constant.-1 player_motion.internal.const
-execute rotated ~ 0 positioned .5 .0 .0 positioned ^ ^ ^-.5 align xyz facing .0 0 -.5 positioned as @s positioned ^ ^ ^1 if entity @s[dx=0,dy=0,dz=0] run \
-    function player_motion:internal/math/polar/flip_xy
+execute if entity @s[y_rotation=90..-90] run function player_motion:internal/math/polar/flip_xy
 
 ### `launch_local_xyz` flow
     ## If the player viewport angle is the same as the context angle, skip rotation calculation and directly run launch
