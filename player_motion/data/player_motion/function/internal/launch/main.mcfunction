@@ -1,22 +1,49 @@
 #> player_motion:internal/launch/main
-# Launches players in the input local direction
+##
+# Launches players along the internal launch vector
+#
+# @returns (1)
+##
 
-execute if entity @s[gamemode=survival] run scoreboard players set $mode player_motion.internal.gamemode 2
-execute if entity @s[gamemode=adventure] run scoreboard players set $mode player_motion.internal.gamemode 3
+## 
+# Apply dummy saddle with `apply_impulse` enchantment to player
+# 
+# Per Smithed specification, the dummy saddle can be unconditionally placed in a player's saddle slot because it will always be empty.
+##
+item replace entity @s saddle with saddle[\
+    equippable={slot: "saddle", equip_sound: {sound_id: ""}}, \
+    enchantments={"player_motion:internal/apply_impulse": 1} \
+]
 
-execute unless items entity @s saddle * run item replace entity @s saddle with saddle[equippable={slot: "saddle", equip_sound: {sound_id: ""}}]
-item modify entity @s saddle {function: "set_enchantments", add: true, enchantments: {"player_motion:internal/apply_impulse": 1}}
-
+## Convert the internal launch vector from scores into a binary score tree for use by `apply_impulse` enchantment
 function player_motion:internal/store/x
 function player_motion:internal/store/y
 function player_motion:internal/store/z
 
-gamemode spectator
+## Instantly trigger the `location_changed` launch by updating the player's world state
 
-execute if score $mode player_motion.internal.gamemode matches 2 store success score $mode player_motion.internal.gamemode run return run gamemode survival
+## Record current gamemode to restore after launch
+execute if entity @s[gamemode=survival] run scoreboard players set $mode player_motion.internal.gamemode 2
+execute if entity @s[gamemode=adventure] run scoreboard players set $mode player_motion.internal.gamemode 3
 
-gamemode adventure
+## If not in creative mode, swap into spectator mode
+execute if score $mode player_motion.internal.gamemode matches 2..3 run gamemode spectator
 
-execute if score $mode player_motion.internal.gamemode matches 3 store success score $mode player_motion.internal.gamemode run return 1
+## If not in creative mode, restore gamemode, successful `gamemode` execution result is always `1`
+execute if score $mode player_motion.internal.gamemode matches 2 \
+    store success score $mode player_motion.internal.gamemode run \
+    return run gamemode survival
+execute if score $mode player_motion.internal.gamemode matches 3 \
+    store success score $mode player_motion.internal.gamemode run \
+    return run gamemode adventure
 
-gamemode creative
+## Player is in creative mode
+
+## If the player is falling, swap into adventure mode, else, swap into spectator mode
+scoreboard players set $falling player_motion.internal.gamemode 0
+execute if predicate player_motion:internal/falling_creative_player \
+    store success score $falling player_motion.internal.gamemode run gamemode adventure
+execute if score $falling player_motion.internal.gamemode matches 0 run gamemode spectator
+
+## Restore gamemode, successful `gamemode` execution result is always `1`
+return run gamemode creative

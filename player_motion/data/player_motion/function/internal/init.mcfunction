@@ -1,9 +1,4 @@
-#> player_motion:internal/technical/load
-# LOAD FUNCTION
-
-# STORAGE
-
-# SCORES
+## Scores
 scoreboard objectives add player_motion.api.launch dummy
 scoreboard objectives add player_motion.internal.dummy dummy
 scoreboard objectives add player_motion.internal.math dummy
@@ -23,14 +18,10 @@ scoreboard objectives add player_motion.internal.gamemode dummy
 scoreboard objectives add player_motion.internal.store dummy
 function player_motion:internal/convert_from_legacy/scoreboard_constants
 
-# FORCELOAD
+## Forceload
 forceload remove 0 0
 forceload add 0 0
 
-# MARKER
+## Marker
 kill d4bd74a7-4e82-4a07-8850-dfc4d89f9e2f
 summon marker 0.0 0.0 0.0 {UUID:[I; -725781337, 1317161479, -2007965756, -660627921], Tags:["smithed.strict", "smithed.entity"]}
-
-
-# TRIG LOOKUP TABLE:
-function player_motion:internal/technical/trig

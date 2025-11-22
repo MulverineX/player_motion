@@ -1,5 +1,3 @@
-# TODO: Compare performance of using an entity for this math vs the old trig
-
 scoreboard players operation $_x player_motion.internal.dummy = $x player_motion.internal.dummy
 scoreboard players operation $_y player_motion.internal.dummy = $y player_motion.internal.dummy
 scoreboard players operation $_z player_motion.internal.dummy = $z player_motion.internal.dummy

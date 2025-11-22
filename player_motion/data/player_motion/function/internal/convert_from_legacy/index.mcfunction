@@ -4,7 +4,7 @@ execute if score $crystal player_motion.internal.dummy matches 0.. run scoreboar
 # Work with absolute value of crystal
 execute if score $crystal player_motion.internal.dummy matches ..-1 run scoreboard players operation $crystal player_motion.internal.dummy *= $sign player_motion.internal.dummy
 # Index into the correct bucket
-$function player_motion:internal/convert_from_legacy/bucket_$(index)
+$function player_motion:internal/convert_from_legacy/bucket/$(index)
 # Restore sign to impulse output
 scoreboard players operation $crystal player_motion.internal.dummy *= $sign player_motion.internal.dummy
 
