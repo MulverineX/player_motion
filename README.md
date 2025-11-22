@@ -5,9 +5,9 @@ Credit to [@BigPapi13](https://github.com/BigPapi13/Delta) for making the origin
 
 Credit to `nedraw` from MCC for the ender crystal methodology & implementation this used to use.
 
-Credit to [@SuperSwordTW](https://github.com/SuperSwordTW) for helping make significant math performance & stability improvements.
+Credit to [@SuperSwordTW](https://github.com/SuperSwordTW) for helping make significant math performance & stability improvements in the previous implementation.
 
-Credit to `1000hrcelebration` & `mastershroob` from MCC for the method of converting a desired global vector into a local vector.
+Credit to `1000hrcelebration` & `mastershroob` from MCC for the method & implementation of converting a desired global vector into a local vector.
 
 ## How to use
 
@@ -45,7 +45,7 @@ function player_motion:api/launch_global_xyz
 - These functions are *additive* and will apply motion in addition to existing motion rather than directly setting it to whatever input you send
 - The player cannot be on a mount nor be in spectator mode
 
-## Old Methods
+## Old Methods (deprecated)
 <details>
   <summary>Click to expand</summary>
 
