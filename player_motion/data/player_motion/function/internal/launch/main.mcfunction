@@ -11,7 +11,7 @@
 # Per Smithed specification, the dummy saddle can be unconditionally placed in a player's saddle slot because it will always be empty.
 ##
 item replace entity @s saddle with saddle[\
-    equippable={slot: "saddle", equip_sound: {sound_id: ""}}, \
+    equippable={slot: "saddle", equip_sound: "intentionally_empty"}, \
     enchantments={"player_motion:internal/apply_impulse": 1} \
 ]
 
