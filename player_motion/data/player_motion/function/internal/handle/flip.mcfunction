@@ -1,2 +1,0 @@
-scoreboard players operation $x player_motion.api.launch *= #constant.-1 player_motion.internal.const
-scoreboard players operation $y player_motion.api.launch *= #constant.-1 player_motion.internal.const
