@@ -5,8 +5,14 @@
 ## If the player is not looking directly along the polar axis, skips handling a special case to avoid gimbal lock issues
 execute unless entity @s[x_rotation=-90] run return run function player_motion:internal/launch/main
 
-    # For the y=-90 case, Z behaves normally but X and Y become locked. Therefore, both
-    # of these must be rotated from local space into global space.
+    # If x,y are both 0, Z still behaves normally so the function can run.
+    execute \
+        if score $x player_motion.internal.dummy matches 0 \
+        if score $y player_motion.internal.dummy matches 0 \
+        run return run function player_motion:internal/launch/main
+
+    # In the -90 case, X and Y become locked to global space. Therefore, both
+    # of these must be rotated to function correctly.
 
     ## Store local launch vector into matrix x/y/z storage from $x/$y/$z scores
     execute store result storage player_motion:internal/temp matrix.x double 1 run \
