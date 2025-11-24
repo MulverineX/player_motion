@@ -1,0 +1,2 @@
+scoreboard players operation $x player_motion.internal.dummy *= #constant.-1 player_motion.internal.const
+scoreboard players operation $y player_motion.internal.dummy *= #constant.-1 player_motion.internal.const
