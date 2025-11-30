@@ -43,9 +43,18 @@
 
 ### `launch_local_xyz` flow
 
-    ## If the player viewport angle is the same as the context angle, skip rotation calculation and launch
-    execute positioned ^ ^ ^1 rotated as @s positioned ^ ^ ^-1 if entity @s[distance=..0.00001] run \
-        return run function player_motion:internal/launch/local_immediate
+    ### If the player viewport angle is the same as the context angle, skip rotation calculation
+        ## Test context against player
+        scoreboard players set $equal_context player_motion.internal.dummy 0
+        execute positioned ^ ^ ^1 rotated as @s positioned ^ ^ ^-1 if entity @s[distance=..0.00001] run \
+            scoreboard players set $equal_context player_motion.internal.dummy 1
+        ## If the player is not looking directly along the polar axis, launch normally, pass the return value of `1` to indicate motion was applied
+        execute if score $equal_context player_motion.internal.dummy matches 1 \
+            unless entity @s[x_rotation=-90] run return run function player_motion:internal/launch/main
+        ## Else, handle polar gimbal lock case, pass the return value of `1` to indicate motion was applied
+        execute if score $equal_context player_motion.internal.dummy matches 1 \
+            run return run function player_motion:internal/launch/handle_polar/local
+    ###
 
     ## Else, proceed with rotation Matrix x/y/z are already set from above, so skip that step
 
@@ -53,10 +62,10 @@
     execute as d4bd74a7-4e82-4a07-8850-dfc4d89f9e2f in minecraft:overworld positioned 0.0 0.0 0.0 run \
         function player_motion:internal/math/local_to_global with storage player_motion:internal/temp matrix
 
-     ## If the player is looking directly along the polar axis, handle as a special case to avoid gimbal lock issues
-    execute if entity @s[x_rotation=-90] run return run function player_motion:internal/launch/handle_polar
-
     ## Continue like `launch_global_xyz` from here
+
+    ## If the player is looking directly along the polar axis, handle as a special case to avoid gimbal lock issues
+    execute if entity @s[x_rotation=-90] run return run function player_motion:internal/launch/handle_polar/global
 
     ## Get magnitude 1 left/up/forward local-to-player vectors into vec_i/vec_j/vec_k using dummy marker entity
     execute rotated as @s as d4bd74a7-4e82-4a07-8850-dfc4d89f9e2f in minecraft:overworld positioned 0.0 0.0 0.0 run \

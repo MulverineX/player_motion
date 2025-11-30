@@ -1,4 +1,4 @@
-$teleport @s ^$(x) ^$(y) ^$(z)
+$execute positioned ^$(x) ^$(y) ^$(z) run function player_motion:internal/math/teleport_marker
 data modify storage player_motion:internal/temp matrix.x set from entity @s Pos[0]
 data modify storage player_motion:internal/temp matrix.y set from entity @s Pos[1]
 data modify storage player_motion:internal/temp matrix.z set from entity @s Pos[2]

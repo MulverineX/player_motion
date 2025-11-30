@@ -26,8 +26,8 @@
     scoreboard players operation $y player_motion.internal.dummy = $y player_motion.api.launch
     scoreboard players operation $z player_motion.internal.dummy = $z player_motion.api.launch
 
-    ## If the player is looking directly along the polar axis, handle as a special case to avoid gimbal lock issues
-    execute if entity @s[x_rotation=-90] run return run function player_motion:internal/launch/handle_polar
+    ## If the player is looking directly along the polar axis, handle as a special case to avoid gimbal lock issues, pass the return value of `1` to indicate motion was applied
+    execute if entity @s[x_rotation=-90] run return run function player_motion:internal/launch/handle_polar/global
 
     ## Store global launch vector into matrix x/y/z storage
     execute store result storage player_motion:internal/temp matrix.x double 1 run \
@@ -57,5 +57,5 @@
         function player_motion:internal/math/global/convert_to_local
 ###
 
-## Launch with local launch vector stored in modified internal $x/$y/$z scores, return `1` to indicate motion was applied
+## Launch with local launch vector stored in modified internal $x/$y/$z scores, pass the return value of `1` to indicate motion was applied
 return run function player_motion:internal/launch/main

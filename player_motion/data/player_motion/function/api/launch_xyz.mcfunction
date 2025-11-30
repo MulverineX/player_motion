@@ -43,7 +43,7 @@
 
 ### `launch_global_xyz` flow
     ## If the player is looking directly along the polar axis, handle as a special case to avoid gimbal lock issues
-    execute if entity @s[x_rotation=-90] run return run function player_motion:internal/launch/handle_polar
+    execute if entity @s[x_rotation=-90] run return run function player_motion:internal/launch/handle_polar/global
 
     ## Get magnitude 1 left/up/forward local-to-player vectors into `matrix` `vec_i`/`vec_j`/`vec_k` using dummy marker entity
     execute as d4bd74a7-4e82-4a07-8850-dfc4d89f9e2f in minecraft:overworld positioned 0.0 0.0 0.0 run \
