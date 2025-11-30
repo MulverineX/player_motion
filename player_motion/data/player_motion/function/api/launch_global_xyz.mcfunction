@@ -22,20 +22,20 @@
         run return 0
 
     ## Store input global launch vector into scores
-    scoreboard players operation $x player_motion.internal.dummy = $x player_motion.api.launch
-    scoreboard players operation $y player_motion.internal.dummy = $y player_motion.api.launch
-    scoreboard players operation $z player_motion.internal.dummy = $z player_motion.api.launch
+    scoreboard players operation #x player_motion.internal.dummy = $x player_motion.api.launch
+    scoreboard players operation #y player_motion.internal.dummy = $y player_motion.api.launch
+    scoreboard players operation #z player_motion.internal.dummy = $z player_motion.api.launch
 
     ## If the player is looking directly along the polar axis, handle as a special case to avoid gimbal lock issues, pass the return value of `1` to indicate motion was applied
     execute if entity @s[x_rotation=-90] run return run function player_motion:internal/launch/handle_polar/global
 
     ## Store global launch vector into matrix x/y/z storage
     execute store result storage player_motion:internal/temp matrix.x double 1 run \
-        scoreboard players get $x player_motion.internal.dummy
+        scoreboard players get #x player_motion.internal.dummy
     execute store result storage player_motion:internal/temp matrix.y double 1 run \
-        scoreboard players get $y player_motion.internal.dummy
+        scoreboard players get #y player_motion.internal.dummy
     execute store result storage player_motion:internal/temp matrix.z double 1 run \
-        scoreboard players get $z player_motion.internal.dummy
+        scoreboard players get #z player_motion.internal.dummy
 ###
 
 ### Convert to local launch vector
@@ -48,14 +48,14 @@
     # 
     # Use no-tp scoreboard math approximation for global-to-local conversion if all input components are smaller than 12398.
     ##
-    scoreboard players set $temp player_motion.internal.dummy 0
+    scoreboard players set #temp player_motion.internal.dummy 0
     execute if predicate player_motion:internal/large_global \
         as d4bd74a7-4e82-4a07-8850-dfc4d89f9e2f in minecraft:overworld positioned 0.0 0.0 0.0 \
-        store result score $temp player_motion.internal.dummy run \
+        store result score #temp player_motion.internal.dummy run \
         function player_motion:internal/math/global/convert_large_to_local
-    execute if score $temp player_motion.internal.dummy matches 0 run \
+    execute if score #temp player_motion.internal.dummy matches 0 run \
         function player_motion:internal/math/global/convert_to_local
 ###
 
-## Launch with local launch vector stored in modified internal $x/$y/$z scores, pass the return value of `1` to indicate motion was applied
+## Launch with local launch vector stored in modified #x/#y/#z scores, pass the return value of `1` to indicate motion was applied
 return run function player_motion:internal/launch/main

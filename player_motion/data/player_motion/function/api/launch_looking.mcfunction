@@ -18,26 +18,26 @@
 
     ## Zero out x & y components for local launch vector
     data modify storage player_motion:internal/temp matrix set value {x: 0.0d, y: 0.0d}
-    execute store result score $x player_motion.internal.dummy run scoreboard players set $y player_motion.internal.dummy 0
+    execute store result score #x player_motion.internal.dummy run scoreboard players set #y player_motion.internal.dummy 0
 ###
 
 ### Convert
     ## Backup the sign of $strength and store the absolute value of $strength into the conversion & conversion index scores
-    execute store result score $bucket_index player_motion.internal.dummy run \
-        scoreboard players operation $crystal player_motion.internal.dummy = $strength player_motion.api.launch
-    scoreboard players set $sign player_motion.internal.dummy 1
-    execute if score $crystal player_motion.internal.dummy matches ..-1 run scoreboard players set $sign player_motion.internal.dummy -1
-    execute if score $crystal player_motion.internal.dummy matches ..-1 \ 
-        store result score $bucket_index player_motion.internal.dummy run \
-        scoreboard players operation $crystal player_motion.internal.dummy *= $sign player_motion.internal.dummy
+    execute store result score #bucket_index player_motion.internal.dummy run \
+        scoreboard players operation #crystal player_motion.internal.dummy = $strength player_motion.api.launch
+    scoreboard players set #sign player_motion.internal.dummy 1
+    execute if score #crystal player_motion.internal.dummy matches ..-1 run scoreboard players set #sign player_motion.internal.dummy -1
+    execute if score #crystal player_motion.internal.dummy matches ..-1 \ 
+        store result score #bucket_index player_motion.internal.dummy run \
+        scoreboard players operation #crystal player_motion.internal.dummy *= #sign player_motion.internal.dummy
 
     ## Calculate conversion index from strength ((strength - 1) / 2000)
-    scoreboard players remove $bucket_index player_motion.internal.dummy 1
+    scoreboard players remove #bucket_index player_motion.internal.dummy 1
     execute store result storage player_motion:internal/temp convert.index int 1 run \
-        scoreboard players operation $bucket_index player_motion.internal.dummy /= $constant.2000 player_motion.internal.const
+        scoreboard players operation #bucket_index player_motion.internal.dummy /= #constant.2000 player_motion.internal.const
 
-    ## Run conversion of strength input (crystal-tuned) to approximately equivalent `apply_impulse` method z component, bucket function restores sign, store in $z & matrix.z
-    execute store result score $z player_motion.internal.dummy store result storage player_motion:internal/temp matrix.z double 1 run \
+    ## Run conversion of strength input (crystal-tuned) to approximately equivalent `apply_impulse` method z component, bucket function restores sign, store in #z & matrix.z
+    execute store result score #z player_motion.internal.dummy store result storage player_motion:internal/temp matrix.z double 1 run \
         function player_motion:internal/convert_from_legacy/index with storage player_motion:internal/temp convert
 ###
 
@@ -45,20 +45,20 @@
 
     ### If the player viewport angle is the same as the context angle, skip rotation calculation
         ## Test context against player
-        scoreboard players set $equal_context player_motion.internal.dummy 0
+        scoreboard players set #equal_context player_motion.internal.dummy 0
         execute positioned ^ ^ ^1 rotated as @s positioned ^ ^ ^-1 if entity @s[distance=..0.00001] run \
-            scoreboard players set $equal_context player_motion.internal.dummy 1
+            scoreboard players set #equal_context player_motion.internal.dummy 1
         ## If the player is not looking directly along the polar axis, launch normally, pass the return value of `1` to indicate motion was applied
-        execute if score $equal_context player_motion.internal.dummy matches 1 \
+        execute if score #equal_context player_motion.internal.dummy matches 1 \
             unless entity @s[x_rotation=-90] run return run function player_motion:internal/launch/main
         ## Else, handle polar gimbal lock case, pass the return value of `1` to indicate motion was applied
-        execute if score $equal_context player_motion.internal.dummy matches 1 \
+        execute if score #equal_context player_motion.internal.dummy matches 1 \
             run return run function player_motion:internal/launch/handle_polar/local
     ###
 
     ## Else, proceed with rotation Matrix x/y/z are already set from above, so skip that step
 
-    ## Convert local-to-context launch vector to global launch vector via dummy marker entity, stores directly back into `matrix` x/y/z storage & internal $x/$y/$z scores
+    ## Convert local-to-context launch vector to global launch vector via dummy marker entity, stores directly back into `matrix` x/y/z storage &#x/#y/#z scores
     execute as d4bd74a7-4e82-4a07-8850-dfc4d89f9e2f in minecraft:overworld positioned 0.0 0.0 0.0 run \
         function player_motion:internal/math/local_to_global with storage player_motion:internal/temp matrix
 
@@ -76,14 +76,14 @@
     # 
     # Use no-tp scoreboard math approximation for global-to-local conversion if all input components are smaller than 12398.
     ##
-    scoreboard players set $temp player_motion.internal.dummy 0
+    scoreboard players set #temp player_motion.internal.dummy 0
     execute if predicate player_motion:internal/large_global \
         as d4bd74a7-4e82-4a07-8850-dfc4d89f9e2f in minecraft:overworld positioned 0.0 0.0 0.0 \
-        store result score $temp player_motion.internal.dummy run \
+        store result score #temp player_motion.internal.dummy run \
         function player_motion:internal/math/global/convert_large_to_local
-    execute if score $temp player_motion.internal.dummy matches 0 run \
+    execute if score #temp player_motion.internal.dummy matches 0 run \
         function player_motion:internal/math/global/convert_to_local
 
-    ## Launch with local launch vector stored in modified internal $x/$y/$z scores
+    ## Launch with local launch vector stored in modified #x/#y/#z scores
     function player_motion:internal/launch/main
 ###

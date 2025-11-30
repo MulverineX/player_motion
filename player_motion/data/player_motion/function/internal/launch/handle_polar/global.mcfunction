@@ -9,24 +9,24 @@
 
 ## Only x and y need to be rotated to compensate for the gimbal lock, if both are zero the launch can continue without handling.
 execute \
-    if score $x player_motion.internal.dummy matches 0 \
-    if score $y player_motion.internal.dummy matches 0 \
+    if score #x player_motion.internal.dummy matches 0 \
+    if score #y player_motion.internal.dummy matches 0 \
     run return run function player_motion:internal/launch/main
 
 ### [Insert explanation of this math]
     ## Swap y and z
-    scoreboard players operation $y player_motion.internal.dummy >< $z player_motion.internal.dummy
+    scoreboard players operation #y player_motion.internal.dummy >< #z player_motion.internal.dummy
 
     ## If y horizontal rotation is between 90 and -90, flip sign of x.
-    scoreboard players set $y_abs_within_90 player_motion.internal.dummy 0
+    scoreboard players set #y_abs_within_90 player_motion.internal.dummy 0
     execute if entity @s[y_rotation=90..-90] \
-        store success score $y_abs_within_90 player_motion.internal.dummy run \
-        scoreboard players operation $x player_motion.internal.dummy *= #constant.-1 player_motion.internal.const
+        store success score #y_abs_within_90 player_motion.internal.dummy run \
+        scoreboard players operation #x player_motion.internal.dummy *= #constant.-1 player_motion.internal.const
 
     ## Else, flip sign of y.
-    execute if score $y_abs_within_90 player_motion.internal.dummy matches 0 run \
-        scoreboard players operation $y player_motion.internal.dummy *= #constant.-1 player_motion.internal.const
+    execute if score #y_abs_within_90 player_motion.internal.dummy matches 0 run \
+        scoreboard players operation #y player_motion.internal.dummy *= #constant.-1 player_motion.internal.const
 ###
 
-## Launch locally with modified internal $x/$y scores and the original $z score, pass the return value of `1` to indicate motion was applied
+## Launch locally with modified #x/#y scores and the original $z score, pass the return value of `1` to indicate motion was applied
 return run function player_motion:internal/launch/main

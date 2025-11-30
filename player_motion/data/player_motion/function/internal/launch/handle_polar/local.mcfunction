@@ -10,33 +10,33 @@
 
 ## Only x and y need to be rotated to compensate for the gimbal lock, if both are zero the launch can continue without handling.
 execute \
-    if score $x player_motion.internal.dummy matches 0 \
-    if score $y player_motion.internal.dummy matches 0 \
+    if score #x player_motion.internal.dummy matches 0 \
+    if score #y player_motion.internal.dummy matches 0 \
     run return run function player_motion:internal/launch/main
 
 ### Convert local x/y to global x/y [Insert explanation of this math]
-    ## Store into matrix x/y storage from $x/$y scores
+    ## Store into matrix x/y storage from #x/#y scores
     execute store result storage player_motion:internal/temp matrix.x double 1 run \
-        scoreboard players get $x player_motion.internal.dummy
+        scoreboard players get #x player_motion.internal.dummy
     execute store result storage player_motion:internal/temp matrix.y double 1 run \
-        scoreboard players get $y player_motion.internal.dummy
+        scoreboard players get #y player_motion.internal.dummy
 
-    ## Convert via dummy marker entity, stores directly back into internal $x/$y scores
+    ## Convert via dummy marker entity, stores directly back into #x/#y scores
     execute as d4bd74a7-4e82-4a07-8850-dfc4d89f9e2f in minecraft:overworld positioned 0.0 0.0 0.0 run \
         function player_motion:internal/math/polar_local_xy_to_global with storage player_motion:internal/temp matrix
 ###
 
 ### [Insert explanation of this math]
     ## If y horizontal rotation is between 90 and -90, flip sign of x.
-    scoreboard players set $y_abs_within_90 player_motion.internal.dummy 0
+    scoreboard players set #y_abs_within_90 player_motion.internal.dummy 0
     execute if entity @s[y_rotation=90..-90] \
-        store success score $y_abs_within_90 player_motion.internal.dummy run \
-        scoreboard players operation $x player_motion.internal.dummy *= #constant.-1 player_motion.internal.const
+        store success score #y_abs_within_90 player_motion.internal.dummy run \
+        scoreboard players operation #x player_motion.internal.dummy *= #constant.-1 player_motion.internal.const
 
     ## Else, flip sign of y.
-    execute if score $y_abs_within_90 player_motion.internal.dummy matches 0 run \
-        scoreboard players operation $y player_motion.internal.dummy *= #constant.-1 player_motion.internal.const
+    execute if score #y_abs_within_90 player_motion.internal.dummy matches 0 run \
+        scoreboard players operation #y player_motion.internal.dummy *= #constant.-1 player_motion.internal.const
 ###
 
-## Launch locally with modified internal $x/$y scores and the original $z score, pass the return value of `1` to indicate motion was applied
+## Launch locally with modified #x/#y scores and the original $z score, pass the return value of `1` to indicate motion was applied
 return run function player_motion:internal/launch/main

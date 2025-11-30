@@ -25,14 +25,14 @@
         run return 0
 
     ## Internal launch vector storage & scores
-    execute store result score $x player_motion.internal.dummy \
-            store result score $y player_motion.internal.dummy run \
-        scoreboard players set $z player_motion.internal.dummy 0
+    execute store result score #x player_motion.internal.dummy \
+            store result score #y player_motion.internal.dummy run \
+        scoreboard players set #z player_motion.internal.dummy 0
     data modify storage player_motion:internal/temp matrix set value {x: 0.0d, y: 0.0d, z: 0.0d}
 ###
 
 ### Convert
-    ## Run approximate conversion of input vector (crystal-tuned) to approximately equivalent `apply_impulse` method vector, store in internal x/y/z scores & `matrix` storage
+    ## Run approximate conversion of input vector (crystal-tuned) to approximately equivalent `apply_impulse` method vector, store in #x/#y/#z scores & `matrix` storage
     execute unless score $x player_motion.api.launch matches 0 run \
         function player_motion:internal/convert_from_legacy/entry/x
     execute unless score $y player_motion.api.launch matches 0 run \
@@ -54,14 +54,14 @@
     # 
     # Use no-tp scoreboard math approximation for global-to-local conversion if all input components are smaller than 12398.
     ##
-    scoreboard players set $temp player_motion.internal.dummy 0
+    scoreboard players set #temp player_motion.internal.dummy 0
     execute if predicate player_motion:internal/large_global \
         as d4bd74a7-4e82-4a07-8850-dfc4d89f9e2f in minecraft:overworld positioned 0.0 0.0 0.0 \
-        store result score $temp player_motion.internal.dummy run \
+        store result score #temp player_motion.internal.dummy run \
         function player_motion:internal/math/global/convert_large_to_local
-    execute if score $temp player_motion.internal.dummy matches 0 run \
+    execute if score #temp player_motion.internal.dummy matches 0 run \
         function player_motion:internal/math/global/convert_to_local
 
-    ## Launch with local launch vector stored in modified internal $x/$y/$z scores
+    ## Launch with local launch vector stored in modified #x/#y/#z scores
     function player_motion:internal/launch/main
 ###
