@@ -26,7 +26,7 @@
     scoreboard players operation #y player_motion.internal.dummy = $y player_motion.api.launch
     scoreboard players operation #z player_motion.internal.dummy = $z player_motion.api.launch
 
-    ## If the player is looking directly along the polar axis, handle as a special case to avoid gimbal lock issues, pass the return value of `1` to indicate motion was applied
+    ## If the player is looking directly along the polar axis, handle as a special case to mitigate mojank's broken rotation math, pass the return value of `1` to indicate motion was applied
     execute if entity @s[x_rotation=-90] run return run function player_motion:internal/launch/handle_polar/global
 
     ## Store global launch vector into matrix x/y/z storage

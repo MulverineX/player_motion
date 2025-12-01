@@ -51,7 +51,7 @@
         ## If the player is not looking directly along the polar axis, launch normally, pass the return value of `1` to indicate motion was applied
         execute if score #equal_context player_motion.internal.dummy matches 1 \
             unless entity @s[x_rotation=-90] run return run function player_motion:internal/launch/main
-        ## Else, handle polar gimbal lock case, pass the return value of `1` to indicate motion was applied
+        ## Else, mitigate mojank's broken rotation math, pass the return value of `1` to indicate motion was applied
         execute if score #equal_context player_motion.internal.dummy matches 1 \
             run return run function player_motion:internal/launch/handle_polar/local
     ###
@@ -64,7 +64,7 @@
 
     ## Continue like `launch_global_xyz` from here
 
-    ## If the player is looking directly along the polar axis, handle as a special case to avoid gimbal lock issues
+    ## If the player is looking directly along the polar axis, handle as a special case to mitigate mojank's broken rotation math
     execute if entity @s[x_rotation=-90] run return run function player_motion:internal/launch/handle_polar/global
 
     ## Get magnitude 1 left/up/forward local-to-player vectors into vec_i/vec_j/vec_k using dummy marker entity

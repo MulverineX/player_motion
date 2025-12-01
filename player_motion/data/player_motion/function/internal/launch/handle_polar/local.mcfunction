@@ -1,6 +1,6 @@
 #> local.mcfunction
 ##
-# Handle local polar axis gimbal lock case
+# During the local polar axis case, mitigate mojank's broken rotation math
 #
 # When:
 # - Local launch vector is needed
@@ -8,13 +8,13 @@
 # - Player viewing angle is the same as the context angle
 ##
 
-## Only x and y need to be rotated to compensate for the gimbal lock, if both are zero the launch can continue without handling.
+## Only x and y need to be rotated to compensate for mojank's broken rotation math, if both are zero the launch can continue without handling.
 execute \
     if score #x player_motion.internal.dummy matches 0 \
     if score #y player_motion.internal.dummy matches 0 \
     run return run function player_motion:internal/launch/main
 
-### Convert local x/y to global x/y [Insert explanation of this math]
+### Convert local x/y to global x/y because the broken rotation is within the global space
     ## Store into matrix x/y storage from #x/#y scores
     execute store result storage player_motion:internal/temp matrix.x double 1 run \
         scoreboard players get #x player_motion.internal.dummy
@@ -26,7 +26,7 @@ execute \
         function player_motion:internal/math/polar_local_xy_to_global with storage player_motion:internal/temp matrix
 ###
 
-### [Insert explanation of this math]
+### Explanation & video: https://discord.com/channels/154777837382008833/1221689674611818556/1444803724043354144
     ## If y horizontal rotation is between 90 and -90, flip sign of x.
     scoreboard players set #y_abs_within_90 player_motion.internal.dummy 0
     execute if entity @s[y_rotation=90..-90] \
