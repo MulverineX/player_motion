@@ -2,7 +2,6 @@
 scoreboard objectives add player_motion.api.launch dummy
 scoreboard objectives add player_motion.internal.dummy dummy
 scoreboard objectives add player_motion.internal.math dummy
-    scoreboard objectives add player_motion.internal.math.sqrt dummy
 scoreboard objectives add player_motion.internal.const dummy
     scoreboard players set #constant.-1 player_motion.internal.const -1
     scoreboard players set #constant.2 player_motion.internal.const 2
@@ -15,6 +14,14 @@ scoreboard objectives add player_motion.internal.const dummy
     scoreboard players set #constant.100000 player_motion.internal.const 100000
     scoreboard players set #constant.1000000 player_motion.internal.const 1000000
 scoreboard objectives add player_motion.internal.gamemode dummy
+scoreboard objectives add player_motion.internal.previous_vec_k dummy
+scoreboard objectives add player_motion.internal.previous_x.in dummy
+scoreboard objectives add player_motion.internal.previous_y.in dummy
+scoreboard objectives add player_motion.internal.previous_z.in dummy
+scoreboard objectives add player_motion.internal.previous_x dummy
+scoreboard objectives add player_motion.internal.previous_y dummy
+scoreboard objectives add player_motion.internal.previous_z dummy
+scoreboard objectives add player_motion.internal.previous_method dummy
 scoreboard objectives add player_motion.internal.store dummy
 function player_motion:internal/convert_from_legacy/scoreboard_constants
 
