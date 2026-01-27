@@ -1,5 +1,6 @@
 ## Scores
 scoreboard objectives add player_motion.api.launch dummy
+scoreboard objectives add player_motion.api.set dummy
 scoreboard objectives add player_motion.internal.dummy dummy
 scoreboard objectives add player_motion.internal.math dummy
 scoreboard objectives add player_motion.internal.const dummy
