@@ -1,6 +1,6 @@
 #> player_motion:api/launch_global_xyz
 ##
-# Launches the player in the input direction
+# Sets the player motion
 #
 # Must be executed `at` the player
 #
