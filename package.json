@@ -1,0 +1,41 @@
+{
+  "name": "player_motion",
+  "version": "2.0.0",
+  "description": "Enchantment effect-based player motion library for Minecraft",
+  "type": "module",
+  "module": "src/index.ts",
+  "scripts": {
+    "dev:watch": "sand watch",
+    "dev:build": "sand build"
+  },
+  "keywords": [],
+  "contributors": [
+    {
+      "name": "MulverineX"
+    },
+    {
+      "name": "1000hrcelebration"
+    },
+    {
+      "name": "mastershroob"
+    },
+    {
+      "name": "SuperSwordTW"
+    },
+    {
+      "name": "nedraw"
+    },
+    {
+      "name": "BigPapi13"
+    }
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "sandstone-cli": "link:sandstone-cli",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "sandstone": "link:sandstone"
+  }
+}
