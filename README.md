@@ -1,4 +1,4 @@
-# Notice: This version of the library is no longer officially maintained, PRs will be accepted, and if anyone wants to have direct commit access, ping me on MCC
+# Notice: This is a special version of the library where the below API is exactly the same and uses the explosion-based method, but also adds the launch_global_xyz/launch_local_xyz methods from the main branch that use the enchantment based method
 Those who want to make maps compatible with Realms must attempt to use this version until mojang does something about """experimental""" features. No support is available in our Issues or Discord thread for this version of the library unless it is being used for a version prior to Minecraft 1.21.11. 
 
 ## Player Motion
