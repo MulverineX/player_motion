@@ -1,5 +1,5 @@
 {
     "values" : [
-        "player_motion:internal/technical/load"
+        "player_motion:internal/init"
     ]
 }

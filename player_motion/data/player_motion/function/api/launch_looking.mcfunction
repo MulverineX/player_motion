@@ -3,7 +3,7 @@
 execute if entity @s[type=!player] run return fail
 execute on vehicle run return fail
 
-scoreboard players set $function_called player_motion.internal.dummy 1
+scoreboard players set $function_called player_motion.internal.old.dummy 1
 tag @s add player_motion.launch
 
 execute store result storage player_motion:math strength double 0.0001 run scoreboard players get $strength player_motion.api.launch
