@@ -36,6 +36,13 @@ summon marker 0.0 0.0 0.0 {UUID:[I; -725781337, 1317161479, -2007965756, -660627
 ## Old
 
 # Scores
+scoreboard objectives add player_motion.internal.old.dummy dummy
+scoreboard objectives add player_motion.internal.old.gamemode dummy
+scoreboard objectives add player_motion.internal.old.math dummy
+    scoreboard objectives add player_motion.internal.old.math.sqrt dummy
+scoreboard objectives add player_motion.internal.motion.x dummy
+scoreboard objectives add player_motion.internal.motion.y dummy
+scoreboard objectives add player_motion.internal.motion.z dummy
 
 # Storage
 data modify storage player_motion:math unitvector set value [0.0d,0.0d,0.0d]

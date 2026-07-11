@@ -1,0 +1,59 @@
+{
+  "condition": "minecraft:any_of",
+  "terms": [
+    {
+      "condition": "minecraft:inverted",
+      "term": {
+        "condition": "minecraft:value_check",
+        "value": {
+          "type": "minecraft:score",
+          "target": {
+            "type": "minecraft:fixed",
+            "name": "$x"
+          },
+          "score": "player_motion.api.launch"
+        },
+        "range": {
+          "min": -12398,
+          "max": 12398
+        }
+      }
+    },
+    {
+      "condition": "minecraft:inverted",
+      "term": {
+        "condition": "minecraft:value_check",
+        "value": {
+          "type": "minecraft:score",
+          "target": {
+            "type": "minecraft:fixed",
+            "name": "$y"
+          },
+          "score": "player_motion.api.launch"
+        },
+        "range": {
+          "min": -12398,
+          "max": 12398
+        }
+      }
+    },
+    {
+      "condition": "minecraft:inverted",
+      "term": {
+        "condition": "minecraft:value_check",
+        "value": {
+          "type": "minecraft:score",
+          "target": {
+            "type": "minecraft:fixed",
+            "name": "$z"
+          },
+          "score": "player_motion.api.launch"
+        },
+        "range": {
+          "min": -12398,
+          "max": 12398
+        }
+      }
+    }
+  ]
+}
