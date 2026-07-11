@@ -1,4 +1,4 @@
-#> player_motion:internal/launch/main
+#> player_motion:internal/old/launch/main
 # Launches players in the input direction
 
 execute \
@@ -14,14 +14,14 @@ execute \
     store result storage player_motion:math motion_z double 0.0001 run \
     scoreboard players operation $motion_z player_motion.internal.old.math = @s player_motion.internal.motion.z
 
-execute in minecraft:overworld run function player_motion:internal/math/main
+execute in minecraft:overworld run function player_motion:internal/old/math/main
 attribute @s explosion_knockback_resistance modifier add player_motion:disable_knockback_resistance -1 add_multiplied_total
-function player_motion:internal/launch/gamemode/get
+function player_motion:internal/old/launch/gamemode/get
 gamemode creative
 tp ~ ~10000 ~
-execute rotated as @s positioned ~ ~10000 ~ run function player_motion:internal/summon/main with storage player_motion:math
+execute rotated as @s positioned ~ ~10000 ~ run function player_motion:internal/old/summon/main with storage player_motion:math
 tp ~ ~ ~
-function player_motion:internal/launch/gamemode/restore
+function player_motion:internal/old/launch/gamemode/restore
 attribute @s explosion_knockback_resistance modifier remove player_motion:disable_knockback_resistance
 
 scoreboard players set $function_called player_motion.internal.old.dummy 0

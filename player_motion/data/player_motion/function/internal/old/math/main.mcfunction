@@ -1,4 +1,4 @@
-#> player_motion:internal/math/main
+#> player_motion:internal/old/math/main
 
 # full_power=sqrt(motion_x²+motion_y²+motion_z²)
     # Save sign of $motion_y
@@ -28,7 +28,7 @@
         execute if score $motion_y player_motion.internal.old.math matches 0 run \
             scoreboard players operation $motion_y player_motion.internal.old.math >< $motion_z player_motion.internal.old.math
 
-        function player_motion:internal/math/full_power/trig
+        function player_motion:internal/old/math/full_power/trig
 
 # n_full_exp=floor(full_power/0.865)
     scoreboard players operation $n_full_exp player_motion.internal.old.math /= #constant.8000 player_motion.internal.const
@@ -37,7 +37,7 @@
     execute if score $angle player_motion.internal.old.math matches 1 run data modify storage player_motion:math magnitude.angle set value 0
 
 # eyelevel=y(eyes)-y(player)
-    function player_motion:internal/math/eyelevel
+    function player_motion:internal/old/math/eyelevel
 
 # sub power operations
     # sub_power=floor(full_power%0.8)
@@ -53,7 +53,7 @@
     scoreboard players operation $d12 player_motion.internal.old.math *= #constant.12 player_motion.internal.const
 
     # Obtain sinα and cosα
-    function player_motion:internal/math/trig/sine with storage player_motion:math magnitude
+    function player_motion:internal/old/math/trig/sine with storage player_motion:math magnitude
 
     # cosα *= eyelevel, record cosα for later use
     scoreboard players operation $cosine player_motion.internal.old.math *= $eyelevel player_motion.internal.old.math
@@ -67,7 +67,7 @@
     # obtain cos(arcsin(cosα*eyelevel/(d12*12))))
     execute store result storage player_motion:math magnitude.quotient int 1 run scoreboard players get $cosine player_motion.internal.old.math
 
-    function player_motion:internal/math/trig/arcsine with storage player_motion:math magnitude
+    function player_motion:internal/old/math/trig/arcsine with storage player_motion:math magnitude
 
     # cos(arcsin(cosα*eyelevel/(d12)))) *= d12
     scoreboard players operation $d player_motion.internal.old.math *= $d12 player_motion.internal.old.math
@@ -103,7 +103,7 @@
     # Obtain cos(arcsin(cosine1))
     execute store result storage player_motion:math magnitude.quotient int 1 run scoreboard players get $cosine1 player_motion.internal.old.math
 
-    function player_motion:internal/math/trig/arcsine with storage player_motion:math magnitude
+    function player_motion:internal/old/math/trig/arcsine with storage player_motion:math magnitude
 
     # cos(arcsin(cosα*eyelevel/(d12)))) *= d12
     scoreboard players operation $d player_motion.internal.old.math *= $d12 player_motion.internal.old.math

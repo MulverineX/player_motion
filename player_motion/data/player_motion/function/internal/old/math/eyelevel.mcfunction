@@ -1,4 +1,4 @@
-#> player_motion:internal/math/eyelevel
+#> player_motion:internal/old/math/eyelevel
 # eyelevel=y(eyes)-y(player)
 execute anchored eyes positioned ^ ^ ^ if entity @s[distance=...41] run \
     return run scoreboard players set $eyelevel player_motion.internal.old.math 40

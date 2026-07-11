@@ -1,4 +1,4 @@
-# > player_motion:internal/math/full_power/tp
+# > player_motion:internal/old/math/full_power/tp
 execute store result storage player_motion:math pos[0] double 0.1 run scoreboard players get $motion_x player_motion.internal.old.math
 execute store result storage player_motion:math pos[1] double 0.1 run scoreboard players get $motion_y player_motion.internal.old.math
 execute store result storage player_motion:math pos[2] double 0.1 run scoreboard players get $motion_z player_motion.internal.old.math

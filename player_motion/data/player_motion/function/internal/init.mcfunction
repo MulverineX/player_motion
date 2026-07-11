@@ -50,7 +50,7 @@ data modify storage player_motion:math motion set value [0.0d,0.0d,0.0d]
 data modify storage player_motion:math pos set value [0.0d,0.0d,0.0d]
 
 # Tick Function
-schedule function player_motion:internal/technical/tick 1t append
+schedule function player_motion:internal/old/technical/tick 1t append
 
 # Trig Lookup Table
-function player_motion:internal/technical/trig
+function player_motion:internal/old/technical/trig
